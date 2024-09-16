@@ -17,7 +17,8 @@ SECRET_KEY = 'siam1234'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://bazar-price-tracker-api.onrender.com"]
+ALLOWED_HOSTS = ["bazar-price-tracker-api.onrender.com"]
+
 
 
 # Application definition

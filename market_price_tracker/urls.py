@@ -5,6 +5,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .views import doc_view
 
 # Initialize schema_view for Swagger documentation
 schema_view = get_schema_view(
@@ -28,10 +29,11 @@ router.register(r'prices', PriceViewSet)
 
 # URL patterns
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/compare/', compare_prices, name='compare_prices'),
-    path('api/prices/<int:item_id>/history/', price_history, name='price_history'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+   path('', doc_view, name='doc'),
+   path('api/', include(router.urls)),
+   path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+   path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+   path('api/compare/', compare_prices, name='compare_prices'),
+   path('api/prices/<int:item_id>/history/', price_history, name='price_history'),
+   path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
