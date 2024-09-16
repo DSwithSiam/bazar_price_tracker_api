@@ -84,12 +84,11 @@ WSGI_APPLICATION = 'market_price_tracker.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-    'default': dj_database_url.config(default='DATABASE_URL', 'postgresql://market_price_tracker_user:5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp@dpg-crk66hg8fa8c73fqgdcg-a/market_price_tracker')
+    'default': dj_database_url.config(
+        default='postgresql://market_price_tracker_user:5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp@dpg-crk66hg8fa8c73fqgdcg-a/market_price_tracker'
+    )
 }
+
 
 
 # Password validation
