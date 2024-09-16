@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-i%ymh7!l*5%)t0_=f7wo+8w)w#6ix717$vl8d14ev7mgik%j$r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://bazar-price-tracker-api.onrender.com"]
 
 
 # Application definition
