@@ -17,6 +17,7 @@ djangorestframework-oauth==1.1.0
 djangorestframework-simplejwt==5.3.1
 drf-extensions==0.7.1
 drf-yasg==1.21.7
+gunicorn==23.0.0
 idna==3.6
 inflection==0.5.1
 jwcrypto==1.5.1
