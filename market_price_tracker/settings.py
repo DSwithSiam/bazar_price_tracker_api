@@ -85,10 +85,16 @@ WSGI_APPLICATION = 'market_price_tracker.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://market_price_tracker_user:5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp@dpg-crk66hg8fa8c73fqgdcg-a/market_price_tracker'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'market_price_tracker',  # Your database name
+        'USER': 'market_price_tracker_user',  # Your database username
+        'PASSWORD': '5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp',  # Your database password
+        'HOST': 'dpg-crk66hg8fa8c73fqgdcg-a',  # Your database host
+        'PORT': '5432',  # PostgreSQL's default port
+    }
 }
+
 
 
 
