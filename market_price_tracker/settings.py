@@ -4,24 +4,17 @@ import dj_database_url
 
 
 PORT =  8000
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'siam1234'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["bazar-price-tracker-api.onrender.com"]
 
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'rest_framework',
@@ -34,8 +27,6 @@ INSTALLED_APPS = [
     'bazar',
     'drf_yasg',
 ]
-
-
 
 
 REST_FRAMEWORK = {
@@ -81,25 +72,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'market_price_tracker.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'market_price_tracker',  # Your database name
+#         'USER': 'market_price_tracker_user',  # Your database username
+#         'PASSWORD': '5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp',  # Your database password
+#         'HOST': 'dpg-crk66hg8fa8c73fqgdcg-a',  # Your database host
+#         'PORT': '5432',  # PostgreSQL's default port
+#     }
+# }
+
+
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'market_price_tracker',  # Your database name
-        'USER': 'market_price_tracker_user',  # Your database username
-        'PASSWORD': '5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp',  # Your database password
-        'HOST': 'dpg-crk66hg8fa8c73fqgdcg-a',  # Your database host
-        'PORT': '5432',  # PostgreSQL's default port
-    }
+    'default': dj_database_url.config(
+        default='postgresql://market_price_tracker_user:5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp@dpg-crk66hg8fa8c73fqgdcg-a.oregon-postgres.render.com/market_price_tracker'
+    )
 }
 
 
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -117,8 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -129,13 +122,10 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
