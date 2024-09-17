@@ -1,456 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bazar Price Tracker API Documentation</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        h2 {
-            margin-top: 20px;
-        }
-        pre {
-            background: #eee;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 4px;
-            overflow-x: auto;
-        }
-        code {
-            background: #f4f4f4;
-            border-radius: 4px;
-            padding: 2px 4px;
-            font-size: 0.9em;
-        }
-        .request, .response {
-            margin-bottom: 20px;
-        }
-        .request pre, .response pre {
-            margin: 0;
-            padding: 10px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #333;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #333;
+      }
+      h2 {
+        margin-top: 20px;
+      }
+      pre {
+        background: #eee;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+      code {
+        background: #f4f4f4;
+        border-radius: 4px;
+        padding: 2px 4px;
+        font-size: 0.9em;
+      }
+      .request,
+      .response {
+        margin-bottom: 20px;
+      }
+      .request pre,
+      .response pre {
+        margin: 0;
+        padding: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Bazar Price Tracker API Documentation</h1>
+      <h1>Bazar Price Tracker API Documentation</h1>
     </header>
 
     <div class="container">
-        <section>
-            <h2>API Base URL</h2>
-            <p><code>https://bazar-price-tracker-api.onrender.com/api/</code></p>
-        </section>
+      <section>
+        <h2>API Base URL</h2>
+        <p>
+          <code>https://bazar-price-tracker-api.onrender.com/api/</code>
+        </p>
+      </section>
 
-        <section>
-            <h2>Authentication</h2>
-            <p>JWT Authentication is required.</p>
-            
-            <h3>Login and Get Token</h3>
-            <p><strong>URL:</strong> <code>/api/token/</code></p>
-            <p><strong>Method:</strong> POST</p>
-            <div class="request">
-                <h4>Request Body:</h4>
-                <pre>
-{
-  "username": "your_username",
-  "password": "your_password"
-}
-                </pre>
-            </div>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "refresh": "your_refresh_token",
-  "access": "your_access_token"
-}
-                </pre>
-            </div>
-            
-            <h3>Refresh Token</h3>
-            <p><strong>URL:</strong> <code>/api/token/refresh/</code></p>
-            <p><strong>Method:</strong> POST</p>
-            <div class="request">
-                <h4>Request Body:</h4>
-                <pre>
-{
-  "refresh": "your_refresh_token"
-}
-                </pre>
-            </div>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "access": "new_access_token"
-}
-                </pre>
-            </div>
-        </section>
+      <section>
+        <h2>Authentication</h2>
+        <p>JWT Authentication is required.</p>
 
-        <section>
-            <h2>Market API</h2>
+        <h3>Login and Get Token</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/token/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> POST
+        </p>
+        <div class="request">
+          <h4>Request Body:</h4>
+          <pre>{ "username": "your_username", "password": "your_password" }</pre>
+        </div>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "refresh": "your_refresh_token", "access": "your_access_token" }</pre>
+        </div>
 
-            <h3>Get All Markets</h3>
-            <p><strong>URL:</strong> <code>/api/markets/</code></p>
-            <p><strong>Method:</strong> GET</p>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-[
-  {
-    "id": 1,
-    "name": "Kawran Bazar",
-    "location": "Dhaka",
-    "opening_hours": "9 AM - 9 PM"
-  }
-]
-                </pre>
-            </div>
+        <h3>Refresh Token</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/token/refresh/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> POST
+        </p>
+        <div class="request">
+          <h4>Request Body:</h4>
+          <pre>{ "refresh": "your_refresh_token" }</pre>
+        </div>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "access": "new_access_token" }</pre>
+        </div>
+      </section>
 
-            <h3>Get Single Market</h3>
-            <p><strong>URL:</strong> <code>/api/markets/{id}/</code></p>
-            <p><strong>Method:</strong> GET</p>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "id": 1,
-  "name": "Kawran Bazar",
-  "location": "Dhaka",
-  "opening_hours": "9 AM - 9 PM"
-}
-                </pre>
-            </div>
+      <section>
+        <h2>Market API</h2>
 
-            <h3>Create New Market</h3>
-            <p><strong>URL:</strong> <code>/api/markets/</code></p>
-            <p><strong>Method:</strong> POST</p>
-            <div class="request">
-                <h4>Request Body:</h4>
-                <pre>
-{
-  "name": "New Market",
-  "location": "Sylhet",
-  "opening_hours": "10 AM - 8 PM"
-}
-                </pre>
-            </div>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "id": 2,
-  "name": "New Market",
-  "location": "Sylhet",
-  "opening_hours": "10 AM - 8 PM"
-}
-                </pre>
-            </div>
+        <h3>Get All Markets</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/markets/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> GET
+        </p>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>[ { "id": 1, "name": "Kawran Bazar", "location": "Dhaka", "opening_hours": "9 AM - 9 PM" } ]</pre>
+        </div>
 
-            <h3>Update Market</h3>
-            <p><strong>URL:</strong> <code>/api/markets/{id}/</code></p>
-            <p><strong>Method:</strong> PUT</p>
-            <div class="request">
-                <h4>Request Body:</h4>
-                <pre>
-{
-  "name": "Updated Market",
-  "location": "Chittagong",
-  "opening_hours": "8 AM - 6 PM"
-}
-                </pre>
-            </div>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "id": 1,
-  "name": "Updated Market",
-  "location": "Chittagong",
-  "opening_hours": "8 AM - 6 PM"
-}
-                </pre>
-            </div>
+        <h3>Get Single Market</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/markets/{id}/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> GET
+        </p>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "id": 1, "name": "Kawran Bazar", "location": "Dhaka", "opening_hours": "9 AM - 9 PM" }</pre>
+        </div>
 
-            <h3>Delete Market</h3>
-            <p><strong>URL:</strong> <code>/api/markets/{id}/</code></p>
-            <p><strong>Method:</strong> DELETE</p>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-204 No Content
-                </pre>
-            </div>
-        </section>
+        <h3>Create New Market</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/markets/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> POST
+        </p>
+        <div class="request">
+          <h4>Request Body:</h4>
+          <pre>{ "name": "New Market", "location": "Sylhet", "opening_hours": "10 AM - 8 PM" }</pre>
+        </div>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "id": 2, "name": "New Market", "location": "Sylhet", "opening_hours": "10 AM - 8 PM" }</pre>
+        </div>
 
-        <section>
-            <h2>Item API</h2>
+        <h3>Update Market</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/markets/{id}/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> PUT
+        </p>
+        <div class="request">
+          <h4>Request Body:</h4>
+          <pre>{ "name": "Updated Market", "location": "Chittagong", "opening_hours": "8 AM - 6 PM" }</pre>
+        </div>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "id": 1, "name": "Updated Market", "location": "Chittagong", "opening_hours": "8 AM - 6 PM" }</pre>
+        </div>
 
-            <h3>Get All Items</h3>
-            <p><strong>URL:</strong> <code>/api/items/</code></p>
-            <p><strong>Method:</strong> GET</p>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-[
-  {
-    "id": 1,
-    "name": "Potato"
-  },
-  {
-    "id": 2,
-    "name": "Tomato"
-  }
-]
-                </pre>
-            </div>
+        <h3>Delete Market</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/markets/{id}/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> DELETE
+        </p>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>204 No Content</pre>
+        </div>
+      </section>
 
-            <h3>Create New Item</h3>
-            <p><strong>URL:</strong> <code>/api/items/</code></p>
-            <p><strong>Method:</strong> POST</p>
-            <div class="request">
-                <h4>Request Body:</h4>
-                <pre>
-{
-  "name": "Onion"
-}
-                </pre>
-            </div>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "id": 3,
-  "name": "Onion"
-}
-                </pre>
-            </div>
-        </section>
+      <section>
+        <h2>Item API</h2>
 
-        <section>
-            <h2>Price API</h2>
+        <h3>Get All Items</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/items/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> GET
+        </p>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>[ { "id": 1, "name": "Potato" }, { "id": 2, "name": "Tomato" } ]</pre>
+        </div>
 
-            <h3>Get All Prices</h3>
-            <p><strong>URL:</strong> <code>/api/prices/</code></p>
-            <p><strong>Method:</strong> GET</p>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-[
-  {
-    "id": 1,
-    "market": {
-      "id": 1,
-      "name": "Kawran Bazar"
-    },
-    "item": {
-      "id": 1,
-      "name": "Potato"
-    },
-    "price_per_kg": "30.00",
-    "last_updated": "2024-09-15"
-  }
-]
-                </pre>
-            </div>
+        <h3>Create New Item</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/items/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> POST
+        </p>
+        <div class="request">
+          <h4>Request Body:</h4>
+          <pre>{ "name": "Onion" }</pre>
+        </div>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "id": 3, "name": "Onion" }</pre>
+        </div>
+      </section>
 
-            <h3>Create New Price</h3>
-            <p><strong>URL:</strong> <code>/api/prices/</code></p>
-            <p><strong>Method:</strong> POST</p>
-            <div class="request">
-                <h4>Request Body:</h4>
-                <pre>
-{
-  "market": 1,
-  "item": 2,
-  "price_per_kg": "40.00"
-}
-                </pre>
-            </div>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "id": 2,
-  "market": {
-    "id": 1,
-    "name": "Kawran Bazar"
-  },
-  "item": {
-    "id": 2,
-    "name": "Tomato"
-  },
-  "price_per_kg": "40.00",
-  "last_updated": "2024-09-15"
-}
-                </pre>
-            </div>
+      <section>
+        <h2>Price API</h2>
 
-            <h3>Update Price</h3>
-            <p><strong>URL:</strong> <code>/api/prices/{id}/</code></p>
-            <p><strong>Method:</strong> PUT</p>
-            <div class="request">
-                <h4>Request Body:</h4>
-                <pre>
-{
-  "market": 1,
-  "item": 2,
-  "price_per_kg": "45.00"
-}
-                </pre>
-            </div>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "id": 1,
-  "market": {
-    "id": 1,
-    "name": "Kawran Bazar"
-  },
-  "item": {
-    "id": 2,
-    "name": "Tomato"
-  },
-  "price_per_kg": "45.00",
-  "last_updated": "2024-09-15"
-}
-                </pre>
-            </div>
-        </section>
+        <h3>Get All Prices</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/prices/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> GET
+        </p>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>[ { "id": 1, "market": { "id": 1, "name": "Kawran Bazar" }, "item": { "id": 1, "name": "Potato" }, "price_per_kg": "30.00", "last_updated": "2024-09-15" } ]</pre>
+        </div>
 
-        <section>
-            <h2>Price Comparison API</h2>
+        <h3>Create New Price</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/prices/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> POST
+        </p>
+        <div class="request">
+          <h4>Request Body:</h4>
+          <pre>{ "market": 1, "item": 2, "price_per_kg": "40.00" }</pre>
+        </div>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "id": 2, "market": { "id": 1, "name": "Kawran Bazar" }, "item": { "id": 2, "name": "Tomato" }, "price_per_kg": "40.00", "last_updated": "2024-09-15" }</pre>
+        </div>
 
-            <h3>Compare Prices of an Item in Multiple Markets</h3>
-            <p><strong>URL:</strong> <code>/api/compare/</code></p>
-            <p><strong>Method:</strong> GET</p>
-            <p><strong>Query Parameters:</strong> <code>item</code> (Item name), <code>markets</code> (List of market IDs, comma-separated)</p>
-            <p><strong>Example URL:</strong> <code>/api/compare/?item=potato&markets=1,2</code></p>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "prices": [
-    {
-      "market": {
-        "id": 1,
-        "name": "Kawran Bazar"
-      },
-      "item": {
-        "id": 1,
-        "name": "Potato"
-      },
-      "price_per_kg": "30.00",
-      "last_updated": "2024-09-15"
-    },
-    {
-      "market": {
-        "id": 2,
-        "name": "New Market"
-      },
-      "item": {
-        "id": 1,
-        "name": "Potato"
-      },
-      "price_per_kg": "28.00",
-      "last_updated": "2024-09-15"
-    }
-  ]
-}
-                </pre>
-            </div>
-        </section>
+        <h3>Update Price</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/prices/{id}/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> PUT
+        </p>
+        <div class="request">
+          <h4>Request Body:</h4>
+          <pre>{ "market": 1, "item": 2, "price_per_kg": "45.00" }</pre>
+        </div>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "id": 1, "market": { "id": 1, "name": "Kawran Bazar" }, "item": { "id": 2, "name": "Tomato" }, "price_per_kg": "45.00", "last_updated": "2024-09-15" }</pre>
+        </div>
+      </section>
 
-        <section>
-            <h2>Price History API</h2>
+      <section>
+        <h2>Price Comparison API</h2>
 
-            <h3>Get Price History of an Item</h3>
-            <p><strong>URL:</strong> <code>/api/prices/{item_id}/history/</code></p>
-            <p><strong>Method:</strong> GET</p>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "history": [
-    {
-      "market": {
-        "id": 1,
-        "name": "Kawran Bazar"
-      },
-      "item": {
-        "id": 1,
-        "name": "Potato"
-      },
-      "price_per_kg": "30.00",
-      "last_updated": "2024-09-15"
-    },
-    {
-      "market": {
-        "id": 1,
-        "name": "Kawran Bazar"
-      },
-      "item": {
-        "id": 1,
-        "name": "Potato"
-      },
-      "price_per_kg": "35.00",
-      "last_updated": "2024-09-14"
-    }
-  ]
-}
-                </pre>
-            </div>
-        </section>
+        <h3>Compare Prices of an Item in Multiple Markets</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/compare/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> GET
+        </p>
+        <p>
+          <strong>Query Parameters:</strong> <code>item</code> (Item name), <code>markets</code> (List of market IDs, comma-separated)
+        </p>
+        <p>
+          <strong>Example URL:</strong> <code>/api/compare/?item=potato&markets=1,2</code>
+        </p>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "prices": [ { "market": { "id": 1, "name": "Kawran Bazar" }, "item": { "id": 1, "name": "Potato" }, "price_per_kg": "30.00", "last_updated": "2024-09-15" }, { "market": { "id": 2, "name": "New Market" }, "item": { "id": 1, "name": "Potato" }, "price_per_kg": "28.00", "last_updated": "2024-09-15" } ] }</pre>
+        </div>
+      </section>
 
-        <section>
-            <h2>Errors and Responses</h2>
+      <section>
+        <h2>Price History API</h2>
 
-            <h3>404 Not Found</h3>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "detail": "Not found."
-}
-                </pre>
-            </div>
+        <h3>Get Price History of an Item</h3>
+        <p>
+          <strong>URL:</strong> <code>/api/prices/{item_id}/history/</code>
+        </p>
+        <p>
+          <strong>Method:</strong> GET
+        </p>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "history": [ { "market": { "id": 1, "name": "Kawran Bazar" }, "item": { "id": 1, "name": "Potato" }, "price_per_kg": "30.00", "last_updated": "2024-09-15" }, { "market": { "id": 1, "name": "Kawran Bazar" }, "item": { "id": 1, "name": "Potato" }, "price_per_kg": "35.00", "last_updated": "2024-09-14" } ] }</pre>
+        </div>
+      </section>
 
-            <h3>401 Unauthorized</h3>
-            <div class="response">
-                <h4>Response:</h4>
-                <pre>
-{
-  "detail": "Authentication credentials were not provided."
-}
-                </pre>
-            </div>
-        </section>
+      <section>
+        <h2>Errors and Responses</h2>
+
+        <h3>404 Not Found</h3>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "detail": "Not found." }</pre>
+        </div>
+
+        <h3>401 Unauthorized</h3>
+        <div class="response">
+          <h4>Response:</h4>
+          <pre>{ "detail": "Authentication credentials were not provided." }</pre>
+        </div>
+      </section>
     </div>
-</body>
+    <section>
+      <h2>About the Developer</h2>
+      <div style="text-align: center;">
+        <img
+          src="https://ibb.co.com/ZGHJb7M"
+          alt="Developer Photo"
+          style="border-radius: 50%; width: 150px; height: 150px;"
+        />
+      </div>
+      <p>
+        Developed by <strong>Md Masipul Islam Siam</strong>. Specializes in backend
+        development and API design with Django and Python.
+      </p>
+      <p>Connect with me on:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>
+          <a href="https://github.com/DSwithSiam" target="_blank">GitHub</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/DSwithSiam" target="_blank">LinkedIn</a>
+        </li>
+        <li>
+          <a href="mailto:masipulislam@gmail.com">Email</a>
+        </li>
+      </ul>
+    </section>
+    
+  </body>
 </html>
-
