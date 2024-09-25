@@ -13,7 +13,7 @@ SECRET_KEY = 'siam1234'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["bazar-price-tracker-api.onrender.com"]
+ALLOWED_HOSTS = ["bazar-price-tracker-api.onrender.com", '127.0.0.1', 'localhost']
 
 
 INSTALLED_APPS = [
@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bazar',
     'drf_yasg',
+    'users',
 ]
 
 
@@ -126,6 +127,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
