@@ -3,7 +3,7 @@
 ---
 
 #### **API Base URL:**
-`http://127.0.0.1:8000/api/`
+`https://bazar-price-tracker-api.onrender.com/api/`
 
 ---
 
