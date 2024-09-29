@@ -30,27 +30,32 @@ class UserRegistrationApiView(APIView):
 
 class UserLoginApiView(APIView):
     def post(self, request):
-        serializer = serializers.UserLoginSerializer(data = self.request.data)
+        serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid():
             username = serializer.validated_data['username']
             password = serializer.validated_data['password']
-
-            user = authenticate(username= username, password=password)
+            
+            user = authenticate(username=username, password=password)
             
             if user:
                 token, _ = Token.objects.get_or_create(user=user)
-    
-                login(request, user)
-                return Response({'token' : token.key, 'user_id' : user.id})
+                login(request, user)  # This is optional for token-based login
+                return Response({
+                    'token': token.key, 
+                    'user_id': user.id
+                })
             else:
-                return Response({'error' : "Invalid Credential"})
-        return Response(serializer.errors)
+                return Response({'error': 'Invalid credentials'}, status=400)
+        
+        return Response(serializer.errors, status=400)
+
+    
     
 class UserLogoutView(APIView):
     def get(self, request):
         request.user.auth_token.delete()
         logout(request)
-
+        return redirect('login')
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -62,6 +67,7 @@ class UserViewSet(viewsets.ModelViewSet):
         if username:
             queryset = queryset.filter(username=username)
         return queryset
+
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer

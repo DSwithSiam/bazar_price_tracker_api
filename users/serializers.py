@@ -27,7 +27,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         account = User(username = username, email=email, first_name = first_name, last_name = last_name)
    
         account.set_password(password)
-        account.is_active = False
+        
         account.save()
         
         return account
@@ -51,10 +51,13 @@ class UserLoginSerializer(serializers.Serializer):
         else:
             raise serializers.ValidationError("Both username and password are required.")
 
+
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = '__all__' 
        
 
 class UserProfileSerializer(serializers.ModelSerializer):

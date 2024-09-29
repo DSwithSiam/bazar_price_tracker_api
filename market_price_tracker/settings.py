@@ -26,21 +26,28 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bazar',
+    'corsheaders',
     'drf_yasg',
     'users',
 ]
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    ),
-}
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_SAVE_EVERY_REQUEST = True 
+CSRF_COOKIE_NAME = 'csrftoken'
 
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -49,6 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'market_price_tracker.urls'
 
 TEMPLATES = [
@@ -68,20 +76,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'market_price_tracker.wsgi.application'
-
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'market_price_tracker',  # Your database name
-#         'USER': 'market_price_tracker_user',  # Your database username
-#         'PASSWORD': '5hy8Q9NUDTgFZT1uBlMKxYsId6e0Lhbp',  # Your database password
-#         'HOST': 'dpg-crk66hg8fa8c73fqgdcg-a',  # Your database host
-#         'PORT': '5432',  # PostgreSQL's default port
-#     }
-# }
-
 
 
 
