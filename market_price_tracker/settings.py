@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 import dj_database_url
-
+import rest_framework
 
 PORT =  8000
 
@@ -35,12 +35,14 @@ INSTALLED_APPS = [
 SESSION_COOKIE_AGE = 1209600  # 2 weeks
 SESSION_SAVE_EVERY_REQUEST = True 
 CSRF_COOKIE_NAME = 'csrftoken'
-
-
+SESSION_COOKIE_SECURE = False  # Only set to True in production
+CSRF_COOKIE_SECURE = False  # Only set to True in production
+CORS_ALLOW_CREDENTIALS = True
 
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
 }

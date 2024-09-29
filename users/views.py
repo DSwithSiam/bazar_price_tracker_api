@@ -52,13 +52,16 @@ class UserLoginApiView(APIView):
     
     
 class UserLogoutView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         request.user.auth_token.delete()
         logout(request)
-        return redirect('login')
+        return Response("Logout")
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    
+    permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -71,7 +74,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer
-    
+    permission_classes = [IsAuthenticated]
+     
     def get_queryset(self):
         user = self.request.user
         queryset = UserProfile.objects.filter(user=user)
